@@ -28,4 +28,7 @@ public class ParkingSpace {
             System.out.println("This parking spot with the ID of " + spaceID + " is already available.");
         }
     }
+    public Vehicle getVehicle(){
+        return this.vehicle;
+    }
 }
