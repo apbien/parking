@@ -10,29 +10,34 @@ public class ParkingLot {
         this.capacity = capacity;
         parkingSpaces = new ParkingSpace[this.capacity];
         this.carCount = 0;
+        for(int i = 0; i < capacity; i++){
+            parkingSpaces[i] = new ParkingSpace();
+        }
     }
 
     public void parkVehicle(Vehicle vehicle){
         for(int i = 0; i < capacity; i++){
-                if(parkingSpaces[i].isAvailable()){
-                    parkingSpaces[i].addVehicle(vehicle);
-                    carCount++;
-                    break;
-                }
+            if(parkingSpaces[i].isAvailable()){
+                parkingSpaces[i].addVehicle(vehicle);
+                carCount++;
+                break;
+            }
         }
     }
-    public void removeVehicle(Vehicle vehicle){
+    public double removeVehicle(String license){
         for(int i = 0; i < capacity; i++){
-            if(parkingSpaces[i].getVehicle() == vehicle){
-                parkingSpaces[i].removeVehicle(vehicle);
+            if(parkingSpaces[i].getVehicle().getLicencePlateNumber() == license){
+                parkingSpaces[i].removeVehicle(parkingSpaces[i].getVehicle());
             }
-
+            return parkingSpaces[i].getVehicle().getTicket().calculateCost();
         }
+        return 0;
     }
 
     public boolean isFull(){
         if(carCount < 500){return false;}
         else{return true;}
     }
+    public ParkingSpace[] getParkingSpace(){return parkingSpaces;}
 
 }

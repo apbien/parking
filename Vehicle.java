@@ -4,7 +4,7 @@ public abstract class Vehicle {
     private Ticket ticket;
 
     public enum vehicleType{
-        car, truck, motorcycles, electric
+        car, truck, motorcycles, electric, other
     }
     public Vehicle(vehicleType newVehicleType){
         this.type = newVehicleType;
@@ -30,7 +30,10 @@ public abstract class Vehicle {
         else if(this.type == vehicleType.truck){return 2.75;}
         else if(this.type == vehicleType.electric){return 0.50;}
         else if(this.type == vehicleType.motorcycles){return 1.25;}
+        else if(this.type == vehicleType.other){return 3.00;}
         else{return 1.00;}
     }
+
+    public Ticket getTicket(){return ticket;}
 }
 

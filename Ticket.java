@@ -1,5 +1,4 @@
 public class Ticket {
-    private CostCalculator calculator;
     private final long startTime = System.currentTimeMillis();
     private final Vehicle vehicle;
     private ticketStatus status;
@@ -12,10 +11,10 @@ public class Ticket {
         super();
         this.vehicle = vehicle;
     }
-    public long parkingDuration(){
+    public double parkingDuration(){
         return System.currentTimeMillis()-startTime;
     }
     public double calculateCost(){
-        return calculator.getCost(parkingDuration(), vehicle.getTypeCost());
+        return (parkingDuration()*vehicle.getTypeCost()*.0001);
     }
 }
